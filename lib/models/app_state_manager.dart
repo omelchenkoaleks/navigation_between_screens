@@ -24,7 +24,18 @@ class AppStateManager extends ChangeNotifier {
   bool get isOnboardingComplete => _onboardingComplete;
   int get getSelectedTab => _selectedTab;
 
-  // TODO: Add initializeApp
+  void initializeApp() {
+    // This sets how long the splash screen will display after the user launches the app.  In a real app you would call the server to get feature flags or app configurations.
+    Timer(
+      const Duration(milliseconds: 2000),
+      () {
+        _initialized = true;
+        // Notifies all listeners.
+        notifyListeners();
+      },
+    );
+  }
+
   // TODO: Add login
   // TODO: Add completeOnboarding
   // TODO: Add goToTab
