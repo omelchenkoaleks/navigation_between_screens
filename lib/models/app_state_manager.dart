@@ -50,7 +50,12 @@ class AppStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  // TODO: Add goToTab
+  // goToTab sets the index of _selectedTab and notifies all listeners.
+  void goToTab(index) {
+    _selectedTab = index;
+    notifyListeners();
+  }
+
   // TODO: Add goToRecipes
   // TODO: Add logout
 }
