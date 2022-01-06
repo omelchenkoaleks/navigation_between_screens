@@ -56,6 +56,11 @@ class AppStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  // TODO: Add goToRecipes
+  // This is a helper function that goes straight to the recipes tab.
+  void goToRecipes() {
+    _selectedTab = FooderlichTab.recipes;
+    notifyListeners();
+  }
+
   // TODO: Add logout
 }
