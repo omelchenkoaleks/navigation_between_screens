@@ -62,5 +62,16 @@ class AppStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  // TODO: Add logout
+  void logout() {
+    // Resets all app state properties.
+    _loggedIn = false;
+    _onboardingComplete = false;
+    _initialized = false;
+    _selectedTab = 0;
+
+    // Reinitializes the app.
+    initializeApp();
+    // Notifies all listeners of state change.
+    notifyListeners();
+  }
 }
