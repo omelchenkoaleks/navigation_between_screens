@@ -44,7 +44,12 @@ class AppStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  // TODO: Add completeOnboarding
+  // Calling completeOnboarding() will notify all listeners that the user has completed the onboarding guide.
+  void completeOnboarding() {
+    _onboardingComplete = true;
+    notifyListeners();
+  }
+
   // TODO: Add goToTab
   // TODO: Add goToRecipes
   // TODO: Add logout
