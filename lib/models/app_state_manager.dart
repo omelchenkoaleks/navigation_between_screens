@@ -36,7 +36,14 @@ class AppStateManager extends ChangeNotifier {
     );
   }
 
-  // TODO: Add login
+  // In a real scenario, make an API request to log in. In this case, however, just using a mock.
+  void login(String username, String password) {
+    // Sets loggedIn to true.
+    _loggedIn = true;
+    // Notifies all listeners.
+    notifyListeners();
+  }
+
   // TODO: Add completeOnboarding
   // TODO: Add goToTab
   // TODO: Add goToRecipes
