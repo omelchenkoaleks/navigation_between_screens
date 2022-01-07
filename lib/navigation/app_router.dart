@@ -84,8 +84,11 @@ class AppRouter extends RouterDelegate
               onCreate: (_) {
                 // onCreate only gets called when the user adds a new item.
               }),
+        // Add Profile Screen.
+        // This checks the profile manager to see if the user selected their profile. If so, it shows the Profile screen.
+        if (profileManager.didSelectUser)
+          ProfileScreen.page(profileManager.getUser),
 
-        // TODO: Add Profile Screen
         // TODO: Add WebView Screen
       ],
     );
@@ -113,7 +116,11 @@ class AppRouter extends RouterDelegate
       groceryManager.groceryItemTapped(-1);
     }
 
-    // TODO: Handle state when user closes profile screen
+    // This checks to see if the route you are popping is indeed the profilePath, then tells the profileManager that the Profile screen is not visible anymore.
+    if (route.settings.name == FooderlichPages.profilePath) {
+      profileManager.tapOnProfile(false);
+    }
+
     // TODO: Handle state when user closes WebView screen
     return true;
   }
