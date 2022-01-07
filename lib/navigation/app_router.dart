@@ -108,7 +108,11 @@ class AppRouter extends RouterDelegate
       appStateManager.logout();
     }
 
-    // TODO: Handle state when user closes grocery item screen
+    // This ensures that the appropriate state is reset when the user taps the back button from the Grocery Item screen.
+    if (route.settings.name == FooderlichPages.groceryItemDetails) {
+      groceryManager.groceryItemTapped(-1);
+    }
+
     // TODO: Handle state when user closes profile screen
     // TODO: Handle state when user closes WebView screen
     return true;
