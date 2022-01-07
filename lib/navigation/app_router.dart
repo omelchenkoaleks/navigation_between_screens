@@ -21,10 +21,21 @@ class AppRouter extends RouterDelegate
     required this.groceryManager,
     required this.profileManager,
   }) : navigatorKey = GlobalKey<NavigatorState>() {
-    // TODO: Add Listeners
+    // Determines the state of the app. It manages whether the app initialized login and if the user completed the onboarding.
+    appStateManager.addListener(notifyListeners);
+    // Manages the list of grocery items and the item selection state.
+    groceryManager.addListener(notifyListeners);
+    // Manages the user’s profile and settings.
+    profileManager.addListener(notifyListeners);
   }
 
-  // TODO: Dispose listeners
+  @override
+  void dispose() {
+    appStateManager.removeListener(notifyListeners);
+    groceryManager.removeListener(notifyListeners);
+    profileManager.removeListener(notifyListeners);
+    super.dispose();
+  }
 
   // RouterDelegate requires to add a build(). This configures navigator and pages.
   @override
