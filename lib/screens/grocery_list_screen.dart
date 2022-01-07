@@ -51,7 +51,8 @@ class GroceryListScreen extends StatelessWidget {
                 },
               ),
               onTap: () {
-                // TODO: Tap on grocery item
+                // This fires groceryItemTapped() to let listeners know that the user selected a grocery item.
+                manager.groceryItemTapped(index);
               },
             ),
           );

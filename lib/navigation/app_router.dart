@@ -70,7 +70,21 @@ class AppRouter extends RouterDelegate
               // onUpdate only gets called when the user updates an existing item.
             },
           ),
-        // TODO: Select GroceryItemScreen
+        // Select GroceryItemScreen.
+        // Checks to see if a grocery item is selected.
+        if (groceryManager.selectedIndex != -1)
+          // If so, creates the Grocery Item screen page.
+          GroceryItemScreen.page(
+              item: groceryManager.selectedGroceryItem,
+              index: groceryManager.selectedIndex,
+              onUpdate: (item, index) {
+                // When the user changes and saves an item, it updates the item at the current index.
+                groceryManager.updateItem(item, index);
+              },
+              onCreate: (_) {
+                // onCreate only gets called when the user adds a new item.
+              }),
+
         // TODO: Add Profile Screen
         // TODO: Add WebView Screen
       ],
