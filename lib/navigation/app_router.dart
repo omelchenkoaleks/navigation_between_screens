@@ -33,7 +33,7 @@ class AppRouter extends RouterDelegate
     return Navigator(
       // Uses the navigatorKey, which is required to retrieve the current navigator.
       key: navigatorKey,
-      // TODO: Add onPopPage
+      onPopPage: _handlePopPage,
       // Declares pages, the stack of pages that describes navigation stack.
       pages: [
         // TODO: Add SplashScreen
@@ -48,7 +48,23 @@ class AppRouter extends RouterDelegate
     );
   }
 
-  // TODO: Add _handlePopPage
+  bool _handlePopPage(
+      // This is the current Route, which contains information like RouteSettings to retrieve the route’s name and arguments.
+      Route<dynamic> route,
+      // result is the value that returns when the route completes — a value that a dialog returns, for example.
+      result) {
+    // Checks if the current route’s pop succeeded.
+    if (!route.didPop(result)) {
+      return false;
+    }
+
+    // If the route pop succeeds, this checks the different routes and triggers the appropriate state changes.
+    // TODO: Handle Onboarding and splash
+    // TODO: Handle state when user closes grocery item screen
+    // TODO: Handle state when user closes profile screen
+    // TODO: Handle state when user closes WebView screen
+    return true;
+  }
 
   @override
   Future<void> setNewRoutePath(configuration) async => null;
