@@ -58,7 +58,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ListTile(
           title: const Text('View raywenderlich.com'),
           onTap: () {
-            // TODO: Open raywenderlich.com webview
+            // Saying to call tapOnRaywenderlich() when the user taps the corresponding button. This triggers a rebuild on router widget and adds the WebView screen.
+            Provider.of<ProfileManager>(context, listen: false)
+                .tapOnRaywenderlich(true);
           },
         ),
         ListTile(
